@@ -3,13 +3,24 @@ package com.example.architecturecomponents
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var tv: TextView
+    private lateinit var button:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         lifecycle.addObserver(Observer())
         Log.d("MAIN", "On created main activity called")
+
+        tv = findViewById(R.id.textView)
+        button = findViewById(R.id.button)
+
+        button.setOnClickListener {
+            tv.text = "${tv.text.toString().toInt() + 1}"
+        }
     }
 
     override fun onStart() {
